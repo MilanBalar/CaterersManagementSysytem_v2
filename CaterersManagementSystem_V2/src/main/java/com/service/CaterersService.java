@@ -15,5 +15,9 @@ public interface CaterersService {
 
 	 public void deleteCaterers(TblAppUser caterers);
 
+	 public Boolean checkEmailAvailability(String email);
+
+
+
 
 }

@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bean.TblAppUser;
 import com.service.CaterersService;
@@ -17,6 +19,13 @@ public class LoginController {
 
 	@RequestMapping("/")
 	public String HomePage() {
+
+
+		return "homePage";
+
+	}
+	@RequestMapping(value = "homePage",method = RequestMethod.GET)
+	public String HomePages() {
 
 
 		return "homePage";
@@ -46,6 +55,27 @@ public class LoginController {
 
 	}
 
+
+	@RequestMapping("/ajax/checkEmailAvailibiklity")
+	@ResponseBody
+	public String checkEmailAvailibiklity(@RequestParam String email) {
+
+		System.out.println("ajax called");
+		if(caterersService.checkEmailAvailability(email)) {
+			return "This Email id is already taken. choose another one";
+		}
+		else
+		{
+			return "Yes!! you can take this Email Id";
+		}
+	}
+
+	@RequestMapping("/termAndCondition")
+	public String termAndConditionPage() {
+
+		return "termsAndCondition";
+
+	}
 	@RequestMapping("/blog")
 	public String blogPage() {
 
