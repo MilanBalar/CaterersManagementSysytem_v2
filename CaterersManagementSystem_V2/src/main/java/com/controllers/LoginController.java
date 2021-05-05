@@ -1,5 +1,8 @@
 package com.controllers;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -39,9 +42,12 @@ public class LoginController {
 	}
 
 	@RequestMapping(value = "saveEmp",method = RequestMethod.POST)
-	public String saveEmpPage(@ModelAttribute("userInfo") TblAppUser userData) {
+	public String saveEmpPage(@ModelAttribute("userInfo") TblAppUser userData,HttpServletRequest req) {
 
 		caterersService.addCaterers(userData);
+		//session
+		HttpSession httpSession=req.getSession();
+		httpSession.setAttribute("message","Registration successful !!");
 
 		System.out.print("Login successfully");
 

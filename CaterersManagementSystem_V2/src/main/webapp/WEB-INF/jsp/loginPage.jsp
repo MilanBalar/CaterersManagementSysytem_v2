@@ -67,7 +67,8 @@ $(document).ready(function() {
 
 						</div>
 				</small>
-			</small> <small> <br>
+			</small> </small> <br>
+			<%@ include file="messages.jsp"%>
 				<br> <form:form action="dashBoard" method="post" modelAttribute="userInfo">
 				       
 						<div class="form-group" style="color: white">

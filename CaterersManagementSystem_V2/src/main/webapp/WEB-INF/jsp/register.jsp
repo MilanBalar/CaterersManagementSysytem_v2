@@ -45,7 +45,7 @@
 
  $(document).ready(function(){
 	 
-	 $("button").click(function(){
+	 $("#check_result").click(function(){
 		 var data = $("#email").val();
 		 if(data != null && data != ''){
 		 $.ajax({
