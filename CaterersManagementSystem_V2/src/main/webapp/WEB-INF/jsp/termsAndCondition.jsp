@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Register page</title>
+<title>Term & condition :: CaterersManagementSystem</title>
 <!-- ---------header part------- -->
 
 <%@ include file="header.jsp"%>

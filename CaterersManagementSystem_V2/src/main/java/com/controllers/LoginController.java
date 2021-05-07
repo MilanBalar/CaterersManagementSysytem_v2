@@ -62,19 +62,47 @@ public class LoginController {
 	}
 
 
-	@RequestMapping("/ajax/checkEmailAvailibiklity")
+	@RequestMapping("/ajax/checkEmailAvailibility")
 	@ResponseBody
 	public String checkEmailAvailibiklity(@RequestParam String email) {
 
 		System.out.println("ajax called");
 		if(caterersService.checkEmailAvailability(email)) {
 			return "This Email id is already taken. choose another one";
+
 		}
 		else
 		{
 			return "Yes!! you can take this Email Id";
+
 		}
 	}
+
+   // login Authentication logic
+	@RequestMapping("/loginAuthentication")
+	public String loginAuthenticationPage(@RequestParam("email") String email,@RequestParam("password") String password,HttpServletRequest request) {
+
+		System.out.println(email);
+		System.out.println(password);
+	   TblAppUser user=caterersService.getUserByEmailAndPassword(email, password);
+	    HttpSession httpSession =request.getSession();
+	   if(email.equals("Admin@gmail.com") && password.equals("Admin"))
+	   {
+		   System.out.println("Super admin Login");
+		   return "AdminDashBoard";
+	   }
+	   else if(user==null)
+	   {
+           httpSession.setAttribute("message", "Invalid Credential !! Try Again");
+		   return "redirect:/login";
+	   }
+	   else {
+           System.out.println(" use login identity is :: -   "+ user.getUserName());
+		return "ClientDashBoard";
+	   }
+
+	}
+
 
 	@RequestMapping("/termAndCondition")
 	public String termAndConditionPage() {

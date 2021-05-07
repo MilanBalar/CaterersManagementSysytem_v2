@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cookery A Food Category Flat Bootstrap Responsive Website Template | Contact :: w3layouts</title>
+<title>contact :: CaterersManagementSystem</title>
 <!-- ---------header part------- -->
 
 <%@ include file="header.jsp" %>	
@@ -19,7 +19,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="header head">
 	<div class="container">
 		<div class="logo">
-			<h1><a href="index.html"><span>C</span><img src="images/oo.png" alt=""><img src="images/oo.png" alt="">kery</a></h1>
+			<h1><a href="index"><span>C</span><img src="images/oo.png" alt=""><img src="images/oo.png" alt="">kery</a></h1>
 		</div>
 		<!-- ----------------- navigation bar start------------ -->
 		
@@ -55,10 +55,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			</div>
 			<div class="address">
 					      <h4>Address</h4>
-					      <p> Richard McClintock</p>
-						  <p>Letraset sheets </p>
+					      <p> Naherunagar, pin 380015</p>
+						  <p>Ahemdabad, Gujrat </p>
 						  <p>ph : +123 859 6050</p>
-						  <p>Email : <a href="mailto:example@gmail.com">example@gmail.com</a></p>
+						  <p>Email : <a href="mailto:cateringmanagementteam@gmail.com">cateringmanagementteam@gmail.com</a></p>
 					 </div>
 			</div>
 			<div class="col-md-7 contact-para animated wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">

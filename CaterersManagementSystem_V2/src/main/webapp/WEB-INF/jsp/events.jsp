@@ -7,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cookery A Food Category Flat Bootstrap Responsive Website Template | Events :: w3layouts</title>
+<title>event :: CaterersManagementSystem</title>
 <!-- ---------header part------- -->
 
 <%@ include file="header.jsp" %>	

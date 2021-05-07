@@ -17,6 +17,7 @@ public interface CaterersService {
 
 	 public Boolean checkEmailAvailability(String email);
 
+	 public TblAppUser getUserByEmailAndPassword(String email,String password);
 
 
 

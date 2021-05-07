@@ -3,18 +3,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Register page</title>
+<title>Register page :: CaterersManagementSystem</title>
 <!-- ---------header part------- -->
 
 <%@ include file="header.jsp"%>
 
 <!-- ----------- header end -------------- -->
 <style type="text/css">
+.worning {
+	color: #FFFF00;
+	font-size: 25px;
+}
+.check_result {
+	background-color: red;
+	border: none;
+	color: white;
+	padding: 7px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 15px;
+	margin: 4px 2px;
+	cursor: pointer;
+} 
+
 .button {
 	background-color: #008CBA;
 	border: none;
 	color: white;
-	padding: 12px 35px;
+	padding: 10px 30px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
@@ -25,26 +42,65 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
- $(document).ready(function(){
+ $(document).ready(function(){ 
 	 
-	 $("button").click(function(){
+	 $("#email").blur(function(){
+		 var data = $("#email").val();
+		 if(data != null && data != ''){
 		 $.ajax({
 
 	            url:'ajax/checkEmailAvailibiklity',
 	            data:{email:$("#email").val()},
-	            success:function(data)
-	            {
-                     $("#result").html(data);
+	            success:function(result)
+	            { 
+		            if(result=='false')
+			            {
+		            	$("#result").html("This Email id is already taken. choose another one");
+		            	
+			            }
+		            else{
+		            	$("#result").html("Yes!! you can take this Email Id");
+			            }
+		            
+                     
 	            }
+	        
 	      });  
 	         
-         
+		 }
+		 else{
+			 $("#result").html("Please Enter Email Id");
+			 }
 	 });
 
 	
- });
+  }); 
 
+
+ function myFunction(){
+	var a = false;
+
+	 $.ajax({
+
+         url:'ajax/checkEmailAvailibiklity',
+         data:{email:$("#email").val()},
+         success:function(result)
+         { 
+	            if(result==true)
+		            {
+	            	
+	            	a=true;
+	            	
+		            }
+	           
+	            
+              
+         }
+     
+   });  
+     
+	
+   }
 
 
 </script>
@@ -56,7 +112,7 @@
 			<div class="logo animated wow pulse" data-wow-duration="1000ms"
 				data-wow-delay="500ms">
 				<h1>
-					<a href="index.html"><span>C</span><img src="images/oo.png"
+					<a href="index"><span>C</span><img src="images/oo.png"
 						alt=""><img src="images/oo.png" alt="">kery</a>
 				</h1>
 			</div>
@@ -74,9 +130,8 @@
 								data-wow-delay="500ms">Registration here...</h4>
 
 						</div>
-				</small>
-			</small> <small> <br>
-				<br> <form:form action="saveEmp" method="post" modelAttribute="userInfo">
+				</small></small> </small> <br>
+				<br> <form:form action="saveEmp" method="post" modelAttribute="userInfo" onsubmit="return myFunction()">
 				        <div class="form-group" style="color: white">
 							<!-- <label for="exampleInputCustomerName"><h3>USER ID</h3></label> -->
 							<form:hidden path="userId" readonly="true" class="form-control" required="required" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name " />
@@ -89,11 +144,12 @@
 						</div>
 						<div class="form-group" style="color: white">
 							<label for="exampleInputEmail1"><h3>Email address</h3></label>
+							<div id="result" class="worning"></div>
 							<b><b><form:input path="email" class="form-control"
 								id="email" required="required" aria-describedby="emailHelp"
 								placeholder="Enter Email" /></b></b>
 					
-						  <small> <button type="button" id="check_result" class="button" class="btn btn-primary">Check Availability</button></small>		
+						  <small> <button type="button" class="check_result"  id="check_result" class="button" class="btn btn-primary">Check Availability</button></small>		
 							<small id="emailHelp" class="form-text text-muted"><h4>We'll
 									never share your email with anyone else.</h4></small>
 									
@@ -122,12 +178,15 @@
 
 						<div class="form-check" style="color: white">
 							<b><b><input type="checkbox" class="form-check-input"
-								id="exampleCheck1" required="required"/>
+								id="exampleCheck1" required="required"/>&nbsp;&nbsp;&nbsp;&nbsp;
 							<label class="form-check-label" for="exampleCheck1"><h3>
-									Check me out</h3></label><br></b></b>
+									I agree to the <b><u><a href=termAndCondition>terms & conditions</a></u></b> of this website.</h3></label><br></b></b>
 							<br>
 						</div>
-						<button type="submit" class="button" class="btn btn-primary">Submit</button>
+					<div align="center">	
+					    <button type="submit" id="submit" class="button"  class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<button type="reset" class="button"  class="btn btn-primary">Reset</button>
+					</div>	
 					</form:form> 
 					<!------------------------end--------------------- --> <br>
 				<br>

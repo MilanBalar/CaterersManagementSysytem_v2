@@ -3,13 +3,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Register page</title>
+<title>Login page :: CaterersManagementSystem</title>
 <!-- ---------header part------- -->
 
 <%@ include file="header.jsp"%>
 
 <!-- ----------- header end -------------- -->
 <style type="text/css">
+.error{
+color: red;
+}
 .button {
 	background-color: #008CBA;
 	border: none;
@@ -59,6 +62,7 @@ $(document).ready(function() {
 			<!-- ----------------- navigation bar End------------ -->
 
 			<!-- --------------resiter page start----------------->
+			<%-- <%@ include file="messages.jsp"%> --%>
 			<small> <small> <small>
 						<div class="banner">
 
@@ -68,10 +72,18 @@ $(document).ready(function() {
 						</div>
 				</small>
 			</small> </small> <br>
-			<%@ include file="messages.jsp"%>
-				<br> <form:form action="dashBoard" method="post" modelAttribute="userInfo">
-				       
-						<div class="form-group" style="color: white">
+			
+		<%	
+		 String message=(String) request.getAttribute("message");
+		
+		%>
+			
+			<div class="alert alert-success error" role="alert">
+               <h4 class="alert-heading">${message}</h4>
+            </div>
+            
+			 <br> <form:form action="loginAuthentication" method="post" modelAttribute="userInfo"> 
+				     <div class="form-group" style="color: white">
 							<label for="exampleInputCustomerName"><h3>Email Id</h3></label>
 							<b><b><form:input path="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email " />
                            </b></b>
@@ -85,7 +97,7 @@ $(document).ready(function() {
 							<small id="emailHelp" class="form-text text-muted"><h4>We'll
 									never share your email with anyone else.</h4></small>
 						</div>
-						<br><br>
+						<br>
 						<h1><button type="submit" class="button" class="btn btn-primary">Login</button></h1>
 					</form:form> 
 					<!------------------------end--------------------- --> <br>

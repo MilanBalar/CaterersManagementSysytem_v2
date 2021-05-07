@@ -16,7 +16,7 @@
 				<div class="col-md-4 footer-bottom  animated wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
 					<h2>Follow Us</h2>
 					<label><i class="glyphicon glyphicon-menu-up"></i></label>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.</p>
+					<p>For any kind of caterers update follow us any of below social media,so we will contact you. </p>
 					<ul class="social-ic">
 						<li><a href="#"><i></i></a></li>
 						<li><a href="#"><i class="ic"></i></a></li>
@@ -29,7 +29,7 @@
 			<div class="clearfix"> </div>
 					
 			</div>
-			<p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms">&copy; 2021 CateresSystem . All Rights Reserved | Design by  <a href="http://google.com/" target="_blank">www.CateresManagemetSystem.com</a> </p>
+			<p class="footer-class animated wow bounce" data-wow-duration="1000ms" data-wow-delay="500ms">&copy; 2021 CateresSystem . All Rights Reserved | Design by <b><u> <a href="index" target="_blank">www.CateresManagemetSystem.com</a></u></b> </p>
 		</div>
 	</div>		
 	<!--//footer-->

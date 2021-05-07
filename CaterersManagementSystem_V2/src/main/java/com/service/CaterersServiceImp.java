@@ -45,7 +45,7 @@ public class CaterersServiceImp implements CaterersService {
 
 
 	public Boolean checkEmailAvailability(String emailId) {
-		System.out.println("email is"+emailId);
+		 System.out.println("email is"+emailId);
 
 			Query query = sessionFactory.openSession().createQuery("select count(email) from TblAppUser login where login.email=:emailId");
 			query.setString("emailId", emailId);
@@ -58,7 +58,26 @@ public class CaterersServiceImp implements CaterersService {
 				return false;
 			}
 
+      }
 
+	public TblAppUser getUserByEmailAndPassword(String email, String password) {
+
+		TblAppUser user=null;
+		try
+		{
+			Query query = sessionFactory.openSession().createQuery("from TblAppUser login where login.email=:emailId and login.password=:password");
+			query.setString("emailId", email);
+			query.setString("password", password);
+		    user = (TblAppUser) query.uniqueResult();
+		    System.out.println("getUserByEmailAndPassword user detail is ="+user);
+
+		}
+		catch(Exception e)
+        {
+      	  System.out.println("----Exception is -------"+e);
+        }
+
+    return user;
 	}
 
 

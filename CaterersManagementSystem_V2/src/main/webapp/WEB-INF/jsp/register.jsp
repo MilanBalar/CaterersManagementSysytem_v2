@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Register page</title>
+<title>Register page :: CaterersManagementSystem</title>
 <!-- ---------header part------- -->
 
 <%@ include file="header.jsp"%>
@@ -42,18 +42,26 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
-
- $(document).ready(function(){
+ $(document).ready(function(){ 
 	 
-	 $("#check_result").click(function(){
+	 $("#email").blur(function(){
 		 var data = $("#email").val();
 		 if(data != null && data != ''){
 		 $.ajax({
 
-	            url:'ajax/checkEmailAvailibiklity',
+	            url:'ajax/checkEmailAvailibility',
 	            data:{email:$("#email").val()},
 	            success:function(data)
-	            {
+	            {   
+	            	if(data=='This Email id is already taken. choose another one')
+		            	{
+	            		  $('#register').attr('disabled', 'disabled');
+		            	}
+	            	else
+		            	{
+	            		$('#register').removeAttr('disabled');
+		            	}
+		             
                      $("#result").html(data);
 	            }
 	        
@@ -66,25 +74,7 @@
 	 });
 
 	
- });
-
-
- function myFunction(){
-     //alert($("#result").val())
-	 alert("submit")
-	
-	 //alert($("#result").val()).equals("Yes!! you can take this Email Id"))
-      /* if(($("#result").val()).equals("Yes!! you can take this Email Id"))
-        {
-             return true;
-        }
-        else{
-            alert("Please enter valide email")
-            return false;
-        } 
- */
-   }
-
+  }); 
 
 </script>
 
@@ -113,9 +103,8 @@
 								data-wow-delay="500ms">Registration here...</h4>
 
 						</div>
-				</small>
-			</small> <small> <br>
-				<br> <form:form action="saveEmp" method="post" modelAttribute="userInfo" onsubmit="myFunction()">
+				</small></small> </small> <br>
+				<br> <form:form action="saveEmp" method="post" modelAttribute="userInfo">
 				        <div class="form-group" style="color: white">
 							<!-- <label for="exampleInputCustomerName"><h3>USER ID</h3></label> -->
 							<form:hidden path="userId" readonly="true" class="form-control" required="required" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name " />
@@ -133,7 +122,7 @@
 								id="email" required="required" aria-describedby="emailHelp"
 								placeholder="Enter Email" /></b></b>
 					
-						  <small> <button type="button" class="check_result"  id="check_result" class="button" class="btn btn-primary">Check Availability</button></small>		
+						 <!--  <small> <button type="button" class="check_result"  id="check_result" class="button" class="btn btn-primary">Check Availability</button></small> -->		
 							<small id="emailHelp" class="form-text text-muted"><h4>We'll
 									never share your email with anyone else.</h4></small>
 									
@@ -168,7 +157,7 @@
 							<br>
 						</div>
 					<div align="center">	
-					    <button type="submit" class="button"  class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    <button type="submit" id="register" class="button"  class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="reset" class="button"  class="btn btn-primary">Reset</button>
 					</div>	
 					</form:form> 
