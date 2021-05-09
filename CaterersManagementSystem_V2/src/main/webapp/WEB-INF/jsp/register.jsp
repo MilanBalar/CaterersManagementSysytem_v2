@@ -77,7 +77,6 @@
   }); 
 
 </script>
-
 </head>
 <body>
 	<div class="header">
@@ -160,7 +159,7 @@
 					    <button type="submit" id="register" class="button"  class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="reset" class="button"  class="btn btn-primary">Reset</button>
 					</div>	
-					</form:form> 
+		   </form:form> 
 					<!------------------------end--------------------- --> <br>
 				<br>
 				<br>

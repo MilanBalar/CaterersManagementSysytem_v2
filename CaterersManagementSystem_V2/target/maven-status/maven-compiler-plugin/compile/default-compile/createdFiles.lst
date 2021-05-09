@@ -3,4 +3,5 @@ com\dao\Dao.class
 com\dao\DaoImp.class
 com\bean\TblAppUser.class
 com\controllers\LoginController.class
+com\controllers\AdminController.class
 com\service\CaterersServiceImp.class

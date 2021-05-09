@@ -49,20 +49,20 @@
 		 if(data != null && data != ''){
 		 $.ajax({
 
-	            url:'ajax/checkEmailAvailibiklity',
+	            url:'ajax/checkEmailAvailibility',
 	            data:{email:$("#email").val()},
-	            success:function(result)
-	            { 
-		            if(result=='false')
-			            {
-		            	$("#result").html("This Email id is already taken. choose another one");
-		            	
-			            }
-		            else{
-		            	$("#result").html("Yes!! you can take this Email Id");
-			            }
-		            
-                     
+	            success:function(data)
+	            {   
+	            	if(data=='This Email id is already taken. choose another one')
+		            	{
+	            		  $('#register').attr('disabled', 'disabled');
+		            	}
+	            	else
+		            	{
+	            		$('#register').removeAttr('disabled');
+		            	}
+		             
+                     $("#result").html(data);
 	            }
 	        
 	      });  
@@ -76,35 +76,7 @@
 	
   }); 
 
-
- function myFunction(){
-	var a = false;
-
-	 $.ajax({
-
-         url:'ajax/checkEmailAvailibiklity',
-         data:{email:$("#email").val()},
-         success:function(result)
-         { 
-	            if(result==true)
-		            {
-	            	
-	            	a=true;
-	            	
-		            }
-	           
-	            
-              
-         }
-     
-   });  
-     
-	
-   }
-
-
 </script>
-
 </head>
 <body>
 	<div class="header">
@@ -131,7 +103,7 @@
 
 						</div>
 				</small></small> </small> <br>
-				<br> <form:form action="saveEmp" method="post" modelAttribute="userInfo" onsubmit="return myFunction()">
+				<br> <form:form action="saveEmp" method="post" modelAttribute="userInfo">
 				        <div class="form-group" style="color: white">
 							<!-- <label for="exampleInputCustomerName"><h3>USER ID</h3></label> -->
 							<form:hidden path="userId" readonly="true" class="form-control" required="required" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name " />
@@ -149,7 +121,7 @@
 								id="email" required="required" aria-describedby="emailHelp"
 								placeholder="Enter Email" /></b></b>
 					
-						  <small> <button type="button" class="check_result"  id="check_result" class="button" class="btn btn-primary">Check Availability</button></small>		
+						 <!--  <small> <button type="button" class="check_result"  id="check_result" class="button" class="btn btn-primary">Check Availability</button></small> -->		
 							<small id="emailHelp" class="form-text text-muted"><h4>We'll
 									never share your email with anyone else.</h4></small>
 									
@@ -184,10 +156,10 @@
 							<br>
 						</div>
 					<div align="center">	
-					    <button type="submit" id="submit" class="button"  class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					    <button type="submit" id="register" class="button"  class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="reset" class="button"  class="btn btn-primary">Reset</button>
 					</div>	
-					</form:form> 
+		   </form:form> 
 					<!------------------------end--------------------- --> <br>
 				<br>
 				<br>
