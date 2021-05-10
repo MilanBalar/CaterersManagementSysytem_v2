@@ -19,9 +19,8 @@ public class DaoImp implements Dao
 	}
 
 	public List<TblAppUser> listCaterers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		return sessionFactory.getCurrentSession().createCriteria(TblAppUser.class).list();
+    }
 
 	public TblAppUser getCaterers(int caterersId) {
 		// TODO Auto-generated method stub

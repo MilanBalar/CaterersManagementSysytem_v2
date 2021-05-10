@@ -22,7 +22,7 @@
         color:white;
         font-size: 15px;
         
-         padding-left:830px;
+         padding-left:800px;
        }
       
    </style>

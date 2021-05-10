@@ -27,10 +27,10 @@ public class CaterersServiceImp implements CaterersService {
 		dao.addCaterers(caterers);
 
 	}
-
+	 @Transactional
 	public List<TblAppUser> listCaterers() {
-		// TODO Auto-generated method stub
-		return null;
+		List<TblAppUser> list=dao.listCaterers();
+		return list;
 	}
 
 	public TblAppUser getCaterers(int caterersId) {

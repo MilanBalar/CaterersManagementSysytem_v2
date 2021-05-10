@@ -30,7 +30,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item"><a class="nav-link" href="charts.html">
+            <li class="nav-item"><a class="nav-link" href="catering/availableCaterers">
 					<i class="fas fa-fw fa-chart-area"></i> 
                     <span>Available Caterers</span>
                 </a>
