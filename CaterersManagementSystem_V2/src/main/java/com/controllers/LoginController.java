@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -80,17 +81,19 @@ public class LoginController {
 
    // login Authentication logic
 	@RequestMapping("/loginAuthentication")
-	public String loginAuthenticationPage(@RequestParam("email") String email,@RequestParam("password") String password,HttpServletRequest request) {
+	public String loginAuthenticationPage(@RequestParam("email") String email,@RequestParam("password") String password,HttpServletRequest request,ModelMap modelMap) {
 
 		System.out.println(email);
 		System.out.println(password);
-	   TblAppUser user=caterersService.getUserByEmailAndPassword(email, password);
+	    TblAppUser user=caterersService.getUserByEmailAndPassword(email, password);
 	    HttpSession httpSession =request.getSession();
 	   if(email.equals("Admin@gmail.com") && password.equals("Admin"))
 	   {
 		   System.out.println("Super admin Login");
+		   modelMap.addAttribute("user", "Admin");
+		   httpSession.setAttribute("user",user);
 		   return "AdminDashBoard";
-	   }
+	  }
 	   else if(user==null)
 	   {
            httpSession.setAttribute("message", "Invalid Credential !! Try Again");
@@ -98,6 +101,8 @@ public class LoginController {
 	   }
 	   else {
            System.out.println(" use login identity is :: -   "+ user.getUserName());
+           httpSession.setAttribute("user",user);
+           modelMap.addAttribute("user", user.getUserName());
 		return "ClientDashBoard";
 	   }
 
