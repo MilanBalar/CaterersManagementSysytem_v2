@@ -52,7 +52,7 @@ public class LoginController {
 
 		System.out.print("Login successfully");
 
-		return "loginPage";
+	 return "loginPage";
 
 	}
 	@RequestMapping("/login")
@@ -62,8 +62,19 @@ public class LoginController {
 
 	}
 
+	@RequestMapping("/logout")
+	public String logoutPage(HttpServletRequest req) {
+     HttpSession session =req.getSession();
+     session.removeAttribute("user");
+     if(session.getAttribute("user")==null) {
+        return "homePage";
+     }
 
-	@RequestMapping("/ajax/checkEmailAvailibility")
+		return "homePage";
+
+	}
+
+   @RequestMapping("/ajax/checkEmailAvailibility")
 	@ResponseBody
 	public String checkEmailAvailibiklity(@RequestParam String email) {
 

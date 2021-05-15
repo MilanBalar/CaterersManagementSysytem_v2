@@ -1,3 +1,10 @@
+<%
+  response.setHeader("Cache-Control","no-cache");
+  response.setHeader("Cache-Control","no-store");
+  response.setHeader("Pragma","no-cache");
+  response.setDateHeader ("Expires", 0);
+%> 
+
 <div class="nav-icon">
 	<a href="#" class="navicon"></a>
 	<div class="toggle">

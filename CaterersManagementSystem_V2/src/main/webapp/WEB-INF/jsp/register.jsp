@@ -1,3 +1,4 @@
+
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html>
@@ -147,7 +148,13 @@
 								aria-describedby="emailHelp" placeholder="Enter Adress" /></b></b>
 
 						</div>
-
+			<!-- -------------------Captch - generator------------------------------- -->
+			
+			<%@ include file="Captch-generator.jsp"%>
+			
+			
+			<!-- --------------------------------------------------------------------------- -->
+			<br><br>
 						<div class="form-check" style="color: white">
 							<b><b><input type="checkbox" class="form-check-input"
 								id="exampleCheck1" required="required"/>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -155,6 +162,7 @@
 									I agree to the <b><u><a href=termAndCondition>terms & conditions</a></u></b> of this website.</h3></label><br></b></b>
 							<br>
 						</div>
+			<br><br>			
 					<div align="center">	
 					    <button type="submit" id="register" class="button"  class="btn btn-primary">Submit</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="reset" class="button"  class="btn btn-primary">Reset</button>

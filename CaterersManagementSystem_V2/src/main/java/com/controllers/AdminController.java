@@ -21,6 +21,7 @@ public class AdminController {
 
 	@RequestMapping("/adminDashBoard")
 	public String HomePage(HttpSession session,@ModelAttribute("userInfo") TblAppUser userData) {
+		/*----------- user restriction for page access------------------*/
 		TblAppUser current_user=(TblAppUser)session.getAttribute("user");
 		   if(current_user==null){
 		   	session.setAttribute("message", "You are not logged in !! Login first");
@@ -41,12 +42,30 @@ public class AdminController {
     }
 
    @RequestMapping("/availableCustomer")
-	public String availableCustomerPage(Model m) {
+	public String availableCustomerPage(Model m,HttpSession session,@ModelAttribute("userInfo") TblAppUser userData) {
 	      List<TblAppUser> list=caterersService.listCaterers();
 	       System.out.println("caterers list"+list);
 		   m.addAttribute("catererslist", list);
-	       return "AvailableCustomerDetails";
-    }
+
+		   /*----------- user restriction for page access------------------*/
+			TblAppUser current_user=(TblAppUser)session.getAttribute("user");
+			   if(current_user==null){
+			   	session.setAttribute("message", "You are not logged in !! Login first");
+
+			   	return "loginPage";
+			   }
+			   else {
+				    if(!("Admin").equals(current_user.getUserName())){
+				   		session.setAttribute("message", "You are not Admin !! Do not Access this page");
+
+				   		return "loginPage";
+		              }
+				    else {
+				    	return "AvailableCustomerDetail";
+				    }
+			   }
+
+           }
 
 
 

@@ -9,6 +9,12 @@
   <name>CaterersManagementSystem_V2 Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <dependencies>
+<!-- https://mvnrepository.com/artifact/net.tanesha.recaptcha4j/recaptcha4j -->
+<dependency>
+    <groupId>net.tanesha.recaptcha4j</groupId>
+    <artifactId>recaptcha4j</artifactId>
+    <version>0.0.7</version>
+</dependency>
 
 	<!-- Servlet API Dependency -->
 	<dependency>

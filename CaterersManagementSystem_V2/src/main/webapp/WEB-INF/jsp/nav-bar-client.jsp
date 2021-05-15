@@ -1,24 +1,42 @@
-              <nav
-					class="navbar navbar-expand navbar-dark bg-dark topbar mb-4 static-top shadow">
+<%
+  response.setHeader("Cache-Control","no-cache");
+  response.setHeader("Cache-Control","no-store");
+  response.setHeader("Pragma","no-cache");
+  response.setDateHeader ("Expires", 0);
+%> 
 
-					<!-- Topbar Search -->
-					<form class="form-inline">
-						<input class="form-control mr-sm-2" type="search"
-							placeholder="Search" aria-label="Search">
-						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-					</form>
+<style>
+ 
+.text-block {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+  background-color: black;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+</style>
 
-					<!-- Topbar Navbar end -->
-					<!-- Nav Item - User Information -->
-					<li class="nav-item dropdown no-arrow"><a
-						class="nav-link dropdown-toggle" href="#" id="userDropdown"
-						role="button" data-toggle="dropdown" aria-haspopup="true"
-						aria-expanded="false"> <span
-							class="mr-2 d-none d-lg-inline text-gray-600 small"><div
-									class="demo">
-									<u>Welcome <strong>${user }</strong></u>
-								</div></span>
 
-					</a></li>
 
-				</nav>
+<nav
+	class="navbar navbar-expand navbar-dark bg-dark topbar mb-4 static-top shadow">
+
+	<!-- Topbar Search -->
+	<form class="form-inline">
+		<input class="form-control mr-sm-2" type="search" placeholder="Search"
+			aria-label="Search">
+		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	</form>
+
+	<!-- Topbar Navbar end -->
+	<!-- Nav Item - User Information -->
+	<div class="text-block">
+		<h5>
+			<u>Welcome <strong>${user }</strong></u> &nbsp;&nbsp; |&nbsp;&nbsp; <a
+				href="logout">Logout</a>
+		</h5>
+	</div>
+
+</nav>
