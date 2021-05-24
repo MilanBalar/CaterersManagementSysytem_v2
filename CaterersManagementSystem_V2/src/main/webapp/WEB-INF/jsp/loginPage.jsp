@@ -10,6 +10,11 @@
 
 <!-- ----------- header end -------------- -->
 <style type="text/css">
+.container {
+  position: relative;
+  font-family: courier;
+}
+
 .error{
 color: red;
 }
@@ -25,6 +30,10 @@ color: red;
 	margin: 4px 2px;
 	cursor: pointer;
 	
+}
+.demo {
+	color: white;
+	font-size: 20px;
 }
 </style>
 <link href="src/jAlert.css" rel="stylesheet">
@@ -92,7 +101,9 @@ $(document).ready(function() {
 							<small id="emailHelp" class="form-text text-muted"><h4>We'll
 									never share your email with anyone else.</h4></small>
 						</div>
-						
+						<div class="form-group demo">
+						   <a href='register'>Not a member? sign up now</a>
+						</div>
 						<h1><button type="submit" class="button" class="btn btn-primary">Login</button></h1>
 					</form:form> 
 					<!------------------------end--------------------- --> <br>

@@ -41,4 +41,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script>
  new WOW().init();
 </script>
+<style>
+.container {
+  position: relative;
+  font-family: courier;
+}
 
+</style>

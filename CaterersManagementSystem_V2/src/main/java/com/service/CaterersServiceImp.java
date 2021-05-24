@@ -50,9 +50,9 @@ public class CaterersServiceImp implements CaterersService {
 			Query query = sessionFactory.openSession().createQuery("select count(email) from TblAppUser login where login.email=:emailId");
 			query.setString("emailId", emailId);
 			Long count = (Long) query.uniqueResult();
+			System.out.println("count of email"+count);
 
-
-			if (count>0) {
+            if (count>0) {
 				return true;
 			} else {
 				return false;
@@ -75,7 +75,11 @@ public class CaterersServiceImp implements CaterersService {
 		catch(Exception e)
         {
       	  System.out.println("----Exception is -------"+e);
+      	  e.printStackTrace();
         }
+		finally {
+			sessionFactory.close();
+		}
 
     return user;
 	}

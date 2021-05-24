@@ -35,7 +35,7 @@
 	<div class="text-block">
 		<h5>
 			<u>Welcome <strong>${user }</strong></u> &nbsp;&nbsp; |&nbsp;&nbsp; <a
-				href="logout">Logout</a>
+				href="logout"><i class="fas fa-power-off"></i></a>
 		</h5>
 	</div>
 

@@ -1,5 +1,7 @@
 package com.controllers;
 
+import java.util.Base64;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -44,7 +46,9 @@ public class LoginController {
 
 	@RequestMapping(value = "saveEmp",method = RequestMethod.POST)
 	public String saveEmpPage(@ModelAttribute("userInfo") TblAppUser userData,HttpServletRequest req) {
-
+        String password=userData.getPassword();
+        String encryptPass=Base64.getEncoder().encodeToString(password.getBytes());
+        userData.setPassword(encryptPass);
 		caterersService.addCaterers(userData);
 		//session
 		HttpSession httpSession=req.getSession();
@@ -96,9 +100,17 @@ public class LoginController {
 
 		System.out.println(email);
 		System.out.println(password);
-	    TblAppUser user=caterersService.getUserByEmailAndPassword(email, password);
+		/*--------------- Encription & Decription start--------------------------*/
+        String encryptPass=Base64.getEncoder().encodeToString(password.getBytes());
+        System.out.println("encrpto password==="+encryptPass);
+        String descPass=new String(Base64.getMimeDecoder().decode(encryptPass));
+        System.out.println("decrpto password==="+descPass);
+		/*--------------- Encription & Decription End--------------------------*/
+
+	    TblAppUser user=caterersService.getUserByEmailAndPassword(email, encryptPass);
+
 	    HttpSession httpSession =request.getSession();
-	   if(email.equals("Admin@gmail.com") && password.equals("Admin"))
+	   if(email.equals("Admin@gmail.com") && encryptPass.equals("QWRtaW4="))
 	   {
 		   System.out.println("Super admin Login");
 		   modelMap.addAttribute("user", "Admin");

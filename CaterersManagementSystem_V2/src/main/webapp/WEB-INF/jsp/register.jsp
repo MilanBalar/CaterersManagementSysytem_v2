@@ -12,10 +12,10 @@
 <!-- ----------- header end -------------- -->
 <style type="text/css">
 .worning {
-	color: #FFFF00;
-	font-size: 25px;
+	color: #FF0000;
+	font-size: 20px;
 }
-.check_result {
+/* .check_result {
 	background-color: red;
 	border: none;
 	color: white;
@@ -26,7 +26,7 @@
 	font-size: 15px;
 	margin: 4px 2px;
 	cursor: pointer;
-} 
+}  */
 
 .button {
 	background-color: #008CBA;
@@ -44,6 +44,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
  $(document).ready(function(){ 
+	 $('#register').attr('disabled', 'disabled');
 	 
 	 $("#email").blur(function(){
 		 var data = $("#email").val();
@@ -60,7 +61,7 @@
 		            	}
 	            	else
 		            	{
-	            		$('#register').removeAttr('disabled');
+	            		/* $('#register').removeAttr('disabled'); */
 		            	}
 		             
                      $("#result").html(data);
@@ -151,7 +152,6 @@
 			<!-- -------------------Captch - generator------------------------------- -->
 			
 			<%@ include file="Captch-generator.jsp"%>
-			
 			
 			<!-- --------------------------------------------------------------------------- -->
 			<br><br>

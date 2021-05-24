@@ -4,7 +4,8 @@
     <title>Create Captcha</title>  
     <script type="text/javascript">  
         /* Function to Generat Captcha */  
-        function GenerateCaptcha() {  
+        function GenerateCaptcha() { 
+             
             var chr1 = Math.ceil(Math.random() * 10) + '';  
             var chr2 = Math.ceil(Math.random() * 10) + '';  
             var chr3 = Math.ceil(Math.random() * 10) + '';  
@@ -13,8 +14,7 @@
             var captchaCode = str + chr1 + ' ' + chr2 + ' ' + chr3;  
             document.getElementById("txtCaptcha").value = captchaCode  
         }  
-  
-        /* Validating Captcha Function */  
+      /* Validating Captcha Function */  
         function ValidCaptcha() {  
             var str1 = removeSpaces(document.getElementById('txtCaptcha').value);  
             var str2 = removeSpaces(document.getElementById('txtCompare').value);  
@@ -67,7 +67,7 @@
         <h4>Enter the Captcha Text:  </h4>
        
         <input type="text" style="color: black" id="txtCompare" /> <br><br>
-         <input id="btnValid" style="color: black" type="button" value="Check" onclick="alert(ValidCaptcha());" />
+         <input  type="button" id="btnValid" style="color: black" required="required" value="Check" onclick="alert(ValidCaptcha());" />
         <input type="button" style="color: black" id="btnrefresh" value="Refresh" onclick="GenerateCaptcha();" />  
          
      </div>
