@@ -44,10 +44,11 @@
   position: absolute;
   bottom: 20px;
   left: 0px;
-  background-color: black;
+  background-color: #5DADE2;
   color: white;
   padding-left: 20px;
   padding-right: 20px;
+  padding-bottom: 10px;
 }
 </style>
  
@@ -60,9 +61,9 @@
    <div class="container">
 
   <div class="text-block">
-    <div style="text-align:center; color: white;">
+    <div style="text-align:center; color: black;">
 
-       <h2><u>Generating Captcha </u></h2> <br>
+       <h3><u>Generating Captcha </u></h3> <br>
         <input type="text" id="txtCaptcha" size="50" style="color:black;" /><br><br>
         <h4>Enter the Captcha Text:  </h4>
        

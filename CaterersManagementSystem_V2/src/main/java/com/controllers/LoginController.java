@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.OtpVarification.OTP;
 import com.bean.TblAppUser;
 import com.service.CaterersService;
 
@@ -106,7 +107,8 @@ public class LoginController {
         String descPass=new String(Base64.getMimeDecoder().decode(encryptPass));
         System.out.println("decrpto password==="+descPass);
 		/*--------------- Encription & Decription End--------------------------*/
-
+    OTP otp=new OTP();
+    otp.sendSms();
 	    TblAppUser user=caterersService.getUserByEmailAndPassword(email, encryptPass);
 
 	    HttpSession httpSession =request.getSession();
