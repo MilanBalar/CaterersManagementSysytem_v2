@@ -9,7 +9,16 @@
 
 <!-- ------------------------admin css End ------------------------- -->
 <title>Admin Dashboard</title>
+<style type="text/css">
 
+.admin .card{
+border:1px solid blue;
+}
+.admin .card:hover{
+background:#e2e2e2;
+cursor:pointer;
+}
+</style>
 </head>
 
 <body id="page-top">
@@ -57,7 +66,7 @@
 										<!-- <img src="images/dashboard.jpg" width="100%" height="100%"
 											class="img-responsive" alt=""> -->
 			   <!-- ----------------------------------Right part start---------------------------------- -->								
-								<div class="container">			
+								<div class="container admin">			
 									 <div class="row mt-3"> <!-- here mt work as <br> tag -->
 									     <!-- -------first column----- -->		
 										 <div class="col-md-4">
@@ -68,7 +77,7 @@
 										              <img style="max-width: 120px" class="img-fluid rounded-circle" alt="Total_users" src="images/icon/Total_users.png">
 										           
 										           </div>
-										           <h1>54353</h1>
+										           <h1>${noOfCustomer }</h1>
 										           <h3>Total Users</h3>
 										         
 										         </div>
@@ -96,7 +105,7 @@
                                           <!-- -------third column----- -->		
 										 <div class="col-md-4">
 										      <!-- --------third box--------- -->
-										     <div class="card">
+										     <div class="card data-toggle="modal" data-target="#add_customer"">
 										         <div class="card-body text-center">
 										            <div class="container">
 										              <img style="max-width: 120px" class="img-fluid " alt="Total_client" src="images/icon/Total_client.png">
@@ -114,35 +123,28 @@
                                      </div>
                             <!-- --------------------------------2nd row start----total md is 12 for full screen----------------- -->
                                <div class="row mt-4">
-                                  <div class="col-md-6">
+                                  <div class="col-md-6"><a href="addCaterersForm">
                                       <div class="card">
-										         <div class="card-body text-center">
+										        <div class="card-body text-center">
 										            <div class="container">
 										              <img style="max-width: 120px" class="img-fluid " alt="Add_caterers" src="images/icon/Add_caterers.png">
-										           
-										            </div>
-										           
-										           <h3>Add Caterers</h3>
-										         
-										         </div>
-										 </div>
-                                  
-                                 
-                                  </div>
+										          </div>
+										           <p class="mt-2">Click here to add new Caterers </p> 
+										           <h3 href="addCaterersForm">Add Caterers</h3>
+										        </div>
+										 </div></a>
+                                   </div>
                                   <div class="col-md-6">
                                        <div class="card">
 										         <div class="card-body text-center">
 										            <div class="container">
 										              <img style="max-width: 120px" class="img-fluid " alt="Add_client" src="images/icon/Add_Food.png">
+										           </div>
 										           
-										            </div>
-										          
+										           <p class="mt-2">Click here to add new Food </p> 
 										           <h3>Add Food</h3>
-										         
 										         </div>
 										 </div>
-                                  
-                                 
                                   </div>
                                </div>
                               <br><br><br><br><br><br>
@@ -161,7 +163,6 @@
 			</div>
 		</div>
 	</div>
-
 
 </body>
 

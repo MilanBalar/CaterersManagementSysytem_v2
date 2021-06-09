@@ -5,6 +5,7 @@
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:task="http://www.springframework.org/schema/task"
 	xsi:schemaLocation="  
         http://www.springframework.org/schema/beans  
         http://www.springframework.org/schema/beans/spring-beans.xsd  
@@ -15,14 +16,21 @@
         http://www.springframework.org/schema/aop
         https://www.springframework.org/schema/aop/spring-aop.xsd 
         http://www.springframework.org/schema/mvc  
-        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/task
+        http://www.springframework.org/schema/task/spring-task-3.1.xsd
+       "> 
+  
 
 	<context:component-scan base-package="com.*"/>
 	<tx:annotation-driven transaction-manager="transactionManager"/>
     <context:property-placeholder location="classpath:/database.properties" />
     <context:property-placeholder location="classpath:/project.properties" />
 	<mvc:annotation-driven />
-
+    <task:annotation-driven/>
+    
+    <task:scheduler id="taskScheduler" pool-size="1"/>
+    
     <mvc:resources mapping="/css/**" location="/css/" />
 	<mvc:resources mapping="/images/**" location="/images/" />
 	<mvc:resources mapping="/js/**" location="/js/" />
@@ -67,9 +75,9 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-	<!-- 	<property name="connection.autoReconnect">true</property>
-<property name="connection.autoReconnectForPools">true</property>
-<property name="connection.is-connection-validation-required">true</property> -->
+		<!-- <property name="connection.autoReconnect">true</property>
+		<property name="connection.autoReconnectForPools">true</property>
+		<property name="connection.is-connection-validation-required">true</property>  -->
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
@@ -77,8 +85,8 @@
 				<prop key="hibernate.dialect">${hibernate.dialect}</prop>
 			    <prop key="connection.autoReconnect">true</prop>
 				<prop key="connection.autoReconnectForPools">true</prop>
-				<prop key="connection.is-connection-validation-required">true</prop>
-
+				<prop key="connection.is-connection-validation-required">true</prop> 
+                
 			</props>
 		</property>
 		<property name="annotatedClasses">

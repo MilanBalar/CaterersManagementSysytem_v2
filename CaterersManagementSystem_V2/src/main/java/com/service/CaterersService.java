@@ -19,6 +19,6 @@ public interface CaterersService {
 
 	 public TblAppUser getUserByEmailAndPassword(String email,String password);
 
-
+	 public long noOfCustomer();
 
 }

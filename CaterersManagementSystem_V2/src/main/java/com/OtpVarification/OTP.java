@@ -1,43 +1,62 @@
-package com.OtpVarification;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Random;
-
-public class OTP {
-	public String sendSms() {
-		int otp;
-		try {
-			// Construct data
-			String apiKey = "apikey=" + "NTQ0OTU0NzE0ZjU2MzY1NjM1Mzg2NTVhNmI0OTU2NTM=";
-			Random random=new Random();
-			otp=random.nextInt(999999);
-
-			String message = "&message=" + "Hey! your otp is "+otp;
-			String sender = "&sender=" + "Caterers Management system";
-			String numbers = "&numbers=" + "+918980841381";
-
-			// Send data
-			HttpURLConnection conn = (HttpURLConnection) new URL("https://api.textlocal.in/send/?").openConnection();
-			String data = apiKey + numbers + message + sender;
-			conn.setDoOutput(true);
-			conn.setRequestMethod("GET");
-			conn.setRequestProperty("Content-Length", Integer.toString(data.length()));
-			conn.getOutputStream().write(data.getBytes("UTF-8"));
-			final BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			final StringBuffer stringBuffer = new StringBuffer();
-			String line;
-			while ((line = rd.readLine()) != null) {
-				stringBuffer.append(line);
-			}
-			rd.close();
-            System.out.println("otp send succesfully");
-			return stringBuffer.toString();
-		} catch (Exception e) {
-			System.out.println("Error SMS "+e);
-			return "Error "+e;
-		}
-	}
-}
+/*
+ * package com.OtpVarification;
+ *
+ * import java.io.BufferedReader; import java.io.InputStreamReader; import
+ * java.net.URL;
+ *
+ * import javax.net.ssl.HttpsURLConnection;
+ *
+ * public class OTP { public static void sendOTP() { try { String
+ * sendId="FSTSMS"; String language="english"; String route="p";
+ *
+ * //message=URLEncoder.encode(message,"UTF-8"); //Important Step
+ *
+ * String myUrl=
+ * "https://www.fast2sms.com/dev/bulkauthorization=NTQ0OTU0NzE0ZjU2MzY1NjM1Mzg2NTVhNmI0OTU2NTM=+&FSTSMS&message=Hello&language=english&route=p&numbers=8980841381";
+ *
+ * String myUrl="https://www.fast2sms.com/dev/bulkauthorization="+apiKey+"&
+ * sender_id="+sendId+"&message="+message+"&language="+language+"&
+ * route="+route+"&numbers="+number; param: String message , String number ,
+ * String apiKey
+ *
+ * URL url=new URL(myUrl); HttpsURLConnection con=
+ * (HttpsURLConnection)url.openConnection();
+ *
+ * con.setRequestMethod("GET");
+ *
+ * con.setRequestProperty("User-Agent","Mozilla/5.0");
+ * con.setRequestProperty("cache-control", "no-cache");
+ *
+ * int responseCode= con.getResponseCode();
+ *
+ * StringBuffer response=new StringBuffer();
+ *
+ * BufferedReader br=new BufferedReader(new
+ * InputStreamReader(con.getInputStream()));
+ *
+ * while(true) { String line=br.readLine();
+ *
+ * if(line==null) { break; }
+ *
+ * response.append(line); }
+ *
+ * System.out.println(response);
+ *
+ * } catch(Exception e) { System.out.println(e); } }
+ *
+ * public static void main(String[] args) {
+ * System.out.println("Program Started....");
+ *
+ * OTP otp=new OTP(); String otpmessage=((Object) otp).generateOTP(5);
+ * System.out.println( "Generate OTP : "+otpmessage);
+ *
+ * String apiKey="USE YOUR API-KEY HERE"; String
+ * number="USE YOUR MOBILE NUMBER HERE";
+ *
+ * sendOTP("Hey this message is send by MuradAli using Java Code. Your OTP is                                     :"
+ * +otpmessage,number,apiKey);
+ *
+ * }
+ *
+ * }
+ */

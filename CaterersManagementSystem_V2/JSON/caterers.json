@@ -1,0 +1,16 @@
+{
+  "Name" : "Ram",
+  "No"   : "898989898",
+  "Address" : [
+      {
+        "city" : "surat",
+        "state" : "guj"
+      },
+      {
+        "city" : "Ahmd",
+        "state" : "mumbai"
+      }
+   
+   ]
+}
+

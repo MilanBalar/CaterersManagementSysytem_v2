@@ -44,15 +44,33 @@ public class CaterersServiceImp implements CaterersService {
 	}
 
 
+	public long noOfCustomer()
+    {   Long count =0l;
+        try {
+	    Query query = sessionFactory.openSession().createQuery("select count(email) from TblAppUser");
+        count =  (Long) query.uniqueResult(); // Long count = (Long)
+		query.uniqueResult();
+		System.out.println("count of email" + count);
+        }
+        catch (Exception e) {
+			System.out.println("----Exception is -------" + e);
+			e.printStackTrace();
+		} /*
+			 * finally { sessionFactory.close(); sessionFactory.openSession().close(); }
+			 */
+		return count;
+
+    }
+
 	public Boolean checkEmailAvailability(String emailId) {
 		 System.out.println("email is"+emailId);
 
 			Query query = sessionFactory.openSession().createQuery("select count(email) from TblAppUser login where login.email=:emailId");
 			query.setString("emailId", emailId);
 			Long count = (Long) query.uniqueResult();
-			System.out.println("count of email"+count);
-
-            if (count>0) {
+			//sessionFactory.openSession().close();
+            System.out.println(count);
+			if (count>0) {
 				return true;
 			} else {
 				return false;
@@ -77,11 +95,10 @@ public class CaterersServiceImp implements CaterersService {
       	  System.out.println("----Exception is -------"+e);
       	  e.printStackTrace();
         }
-		finally {
-			sessionFactory.close();
-		}
-
-    return user;
+		/*
+		 * finally { sessionFactory.close(); sessionFactory.openSession().close(); }
+		 */
+     return user;
 	}
 
 

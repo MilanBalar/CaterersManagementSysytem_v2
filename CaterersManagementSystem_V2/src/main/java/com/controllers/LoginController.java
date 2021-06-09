@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.OtpVarification.OTP;
 import com.bean.TblAppUser;
 import com.service.CaterersService;
 
@@ -107,8 +107,8 @@ public class LoginController {
         String descPass=new String(Base64.getMimeDecoder().decode(encryptPass));
         System.out.println("decrpto password==="+descPass);
 		/*--------------- Encription & Decription End--------------------------*/
-    OTP otp=new OTP();
-    otp.sendSms();
+    //OTP otp=new OTP();
+    //otp.sendOTP();
 	    TblAppUser user=caterersService.getUserByEmailAndPassword(email, encryptPass);
 
 	    HttpSession httpSession =request.getSession();
@@ -117,6 +117,15 @@ public class LoginController {
 		   System.out.println("Super admin Login");
 		   modelMap.addAttribute("user", "Admin");
 		   httpSession.setAttribute("user",user);
+
+			try {
+				long noOfCustomer = caterersService.noOfCustomer();
+				modelMap.addAttribute("noOfCustomer", noOfCustomer);
+			} catch (Exception e) {
+				e.printStackTrace();
+
+			}
+
 		   return "AdminDashBoard";
 	  }
 	   else if(user==null)
@@ -132,6 +141,12 @@ public class LoginController {
 	   }
 
 	}
+	 @Scheduled(cron = "* * 1 * * *")
+	 public void printSome()
+	 {
+
+		 System.out.println("Hey !! this is scheduler...call every 1 hours........");
+	 }
 
 
 	@RequestMapping("/termAndCondition")

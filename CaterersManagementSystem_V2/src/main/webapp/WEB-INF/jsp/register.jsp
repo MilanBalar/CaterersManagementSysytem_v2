@@ -11,7 +11,7 @@
 <!-- ----------- header end -------------- -->
 <style type="text/css">
 .worning {
-	color: #FF0000;
+	/* color: #FF0000; */
 	font-size: 20px;
 }
 /* .check_result {
@@ -83,7 +83,7 @@
              check_fname();
           });
         
-         $("#email").focusout(function() {
+         $("#email").change(function() {
             check_email();
          });
          $("#form_password").focusout(function() {
@@ -156,7 +156,8 @@
             if (pattern.test(email) && email !== '') {
                $("#email_error_message").hide();
                $("#email").css("border-bottom","4px solid #34F458");
-               checkEmail();
+                var res=checkEmail();
+                alert(res);
             } else {
                $("#email_error_message").html("Invalid Email");
                $("#email_error_message").show();
@@ -191,39 +192,45 @@
          
     	 $('#register').attr('disabled', 'disabled');
     	 
-    	 function checkEmail(){
-    		 var data = $("#email").val();
-    		 if(data != null && data != ''){
-    		 $.ajax({
 
-    	            url:'ajax/checkEmailAvailibility',
-    	            data:{email:$("#email").val()},
-    	            success:function(data)
-    	            {   
-    	            	if(data=='This Email id is already taken. choose another one')
-    		            	{
-    	            		  $('#register').attr('disabled', 'disabled');
-    		            	}
-    	            	else
-    		            	{
-    	            		 $('#register').removeAttr('disabled'); 
-    	            		}
-    	                	ValidCaptcha();
-                         $("#result").html(data);
-    	            }
-    	        
-    	      });  
-    	         
-    		 }
-    		 else{
-    			 $("#result").html("Please Enter Email Id");
-    			 }
-    	 }
 
 
          
   }); 
+ function checkEmail(){
+	 alert("ajax called");
+	 var data = $("#email").val();
+	 if(data != null && data != ''){
+	 $.ajax({
 
+            url:'ajax/checkEmailAvailibility',
+            data:{email:$("#email").val()},
+            success:function(data)
+            {   
+            	if(data=='This Email id is already taken. choose another one')
+	            	{
+            		  $('#register').attr('disabled', 'disabled');
+            		  $("#result").html(data);
+            		  $("#result").css("color","red");
+	            	}
+            	else
+	            	{
+            		 $('#register').removeAttr('disabled'); 
+            		 $("#result").html(data);
+            		 $("#result").css("color","green");
+            		}
+                	ValidCaptcha();
+                
+            }
+        
+      });  
+         
+	 }
+	 else{
+		 $("#result").html("Please Enter Email Id");
+		 }
+	 return true;
+ }
 </script>
 </head>
 <body>
@@ -285,7 +292,7 @@
 				        </div>
 				        <div class="form-group" style="color: white">
 							<label for="exampleInputPassword1"><h3>Re-Enter Password</h3></label>
-							<b><b><form:password path="password" required="required" class="form-control"
+							<b><b><input type=password  required="required" class="form-control"
 								id="form_retype_password" placeholder="Enter Password" /></b></b>
 							<span class="error_form" id="retype_password_error_message"></span>
 				        </div>

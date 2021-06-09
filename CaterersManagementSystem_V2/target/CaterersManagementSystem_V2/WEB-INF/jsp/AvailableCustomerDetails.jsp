@@ -12,6 +12,22 @@
        
      <!-- ------------------------admin css End ------------------------- -->    
         <title>Available Customer</title>
+<style>
+table.d {
+	table-layout: fixed;
+	width: 80%;
+}
+th{
+text-align:center;
+}
+td{
+text-align:left;
+}
+.detail{
+text-align:center;
+}
+
+</style>
 
 </head>
 
@@ -62,7 +78,7 @@
 						<div
 							class="card-header py-3 d-flex flex-row align-items-center justify-content-between ">
 							<h6 class="m-0 font-weight-bold text-primary ">
-								<b>Dashboard</b>
+							  <u><h3> <b>Customer Details</b></h3></u>
 							</h6>
 
 						</div>
@@ -71,13 +87,13 @@
 
 							<div class=" ser-bottom">
 								<form action="addData" method="post">
-									<table border="" align="center">
-										<tr>
+									<table border="" align="center" class="d">
+										<tr  class="bg-warning" style="height:70px;width:130px">
 											<th>Customer Id</th>
-											<th>Customer Name</th>
-											<th>Customer Email</th>
-											<th>Customer ContactNumber</th>
-											<th>Customer Address</th>
+											<th>Name</th>
+											<th style="width:250px">Email</th>
+											<th>Contact Number</th>
+											<th>Address</th>
 											<th>Delete Record</th>
 										</tr>
 

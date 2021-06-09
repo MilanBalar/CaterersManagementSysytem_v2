@@ -59,7 +59,7 @@
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
-			<li class="nav-item"><a class="nav-link" href="catering/availableCustomer">
+			<li class="nav-item"><a class="nav-link" href="availableCustomer">
 					<i class="fas fa-fw fa-chart-area"></i> 
 					<span>AvailableCustomer</span></a>
 			</li>
