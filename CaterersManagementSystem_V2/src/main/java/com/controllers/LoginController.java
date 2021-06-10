@@ -119,8 +119,13 @@ public class LoginController {
 		   httpSession.setAttribute("user",user);
 
 			try {
-				long noOfCustomer = caterersService.noOfCustomer();
-				modelMap.addAttribute("noOfCustomer", noOfCustomer);
+                  long noOfCustomer = caterersService.noOfCustomer(); long noOfCaterers =
+				  caterersService.noOfCateres(); long totalUsers= noOfCustomer+noOfCaterers;
+				  System.out.println("total user Is : "+totalUsers);
+				  modelMap.addAttribute("noOfCustomer", noOfCustomer);
+				  modelMap.addAttribute("noOfCaterers", noOfCaterers);
+				  modelMap.addAttribute("totalUsers", totalUsers);
+
 			} catch (Exception e) {
 				e.printStackTrace();
 

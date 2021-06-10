@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bean.TblAppUser;
@@ -14,6 +15,7 @@ import com.dao.Dao;
 
 @Service
 @Component
+@Transactional(readOnly = true, propagation=Propagation.NOT_SUPPORTED)
 public class CaterersServiceImp implements CaterersService {
 
 	 @Autowired
@@ -22,12 +24,12 @@ public class CaterersServiceImp implements CaterersService {
 	 @Autowired
 	 private SessionFactory sessionFactory;
 
-	 @Transactional
+    @Transactional(readOnly = true, propagation=Propagation.NOT_SUPPORTED)
     public void addCaterers(TblAppUser caterers) {
 		dao.addCaterers(caterers);
 
 	}
-	 @Transactional
+
 	public List<TblAppUser> listCaterers() {
 		List<TblAppUser> list=dao.listCaterers();
 		return list;
@@ -43,61 +45,69 @@ public class CaterersServiceImp implements CaterersService {
 
 	}
 
+	public long noOfCateres()
+    {   Long count =0l;
+        try {
+	    Query query = sessionFactory.getCurrentSession().createQuery("select count(email) from TblCaterers");
+        count =   (Long) query.uniqueResult(); // Long count = (Long)
+		query.uniqueResult();
+		System.out.println("number of caterers" + count);
+        }
+        catch (Exception e) {
+        	sessionFactory.openSession();
+		    e.printStackTrace();
+		}
+       return count;
+     }
 
 	public long noOfCustomer()
     {   Long count =0l;
         try {
-	    Query query = sessionFactory.openSession().createQuery("select count(email) from TblAppUser");
+	    Query query = sessionFactory.getCurrentSession().createQuery("select count(email) from TblAppUser");
         count =  (Long) query.uniqueResult(); // Long count = (Long)
 		query.uniqueResult();
-		System.out.println("count of email" + count);
+		System.out.println("number of customer" + count);
         }
         catch (Exception e) {
-			System.out.println("----Exception is -------" + e);
-			e.printStackTrace();
-		} /*
-			 * finally { sessionFactory.close(); sessionFactory.openSession().close(); }
-			 */
-		return count;
-
-    }
+        	sessionFactory.openSession();
+		    e.printStackTrace();
+		}
+       return count;
+     }
 
 	public Boolean checkEmailAvailability(String emailId) {
 		 System.out.println("email is"+emailId);
-
-			Query query = sessionFactory.openSession().createQuery("select count(email) from TblAppUser login where login.email=:emailId");
+		 Long count=0l;
+		try{
+			Query query = sessionFactory.getCurrentSession().createQuery("select count(email) from TblAppUser login where login.email=:emailId");
 			query.setString("emailId", emailId);
-			Long count = (Long) query.uniqueResult();
-			//sessionFactory.openSession().close();
+			count = (Long) query.uniqueResult();
             System.out.println(count);
-			if (count>0) {
-				return true;
-			} else {
-				return false;
+        }catch(Exception e){
+        	sessionFactory.openSession();
+		     e.printStackTrace();
 			}
-
+		if (count>0) {
+		   return true;
+		} else {
+			return false;
+		}
       }
 
 	public TblAppUser getUserByEmailAndPassword(String email, String password) {
-
-		TblAppUser user=null;
+       TblAppUser user=null;
 		try
 		{
-			Query query = sessionFactory.openSession().createQuery("from TblAppUser login where login.email=:emailId and login.password=:password");
+			Query query = sessionFactory.getCurrentSession().createQuery("from TblAppUser login where login.email=:emailId and login.password=:password");
 			query.setString("emailId", email);
 			query.setString("password", password);
 		    user = (TblAppUser) query.uniqueResult();
 		    System.out.println("getUserByEmailAndPassword user detail is ="+user);
-
-		}
-		catch(Exception e)
-        {
-      	  System.out.println("----Exception is -------"+e);
-      	  e.printStackTrace();
         }
-		/*
-		 * finally { sessionFactory.close(); sessionFactory.openSession().close(); }
-		 */
+		catch(Exception e)
+        {   sessionFactory.openSession();
+			e.printStackTrace();
+		}
      return user;
 	}
 

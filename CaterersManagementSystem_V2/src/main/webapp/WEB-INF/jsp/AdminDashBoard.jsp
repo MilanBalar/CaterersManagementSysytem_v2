@@ -77,7 +77,7 @@ cursor:pointer;
 										              <img style="max-width: 120px" class="img-fluid rounded-circle" alt="Total_users" src="images/icon/Total_users.png">
 										           
 										           </div>
-										           <h1>${noOfCustomer }</h1>
+										           <h1>${totalUsers }</h1>
 										           <h3>Total Users</h3>
 										         
 										         </div>
@@ -93,7 +93,7 @@ cursor:pointer;
 										              <img style="max-width: 120px" class="img-fluid" alt="Total_caterers" src="images/icon/Total_caterers.png">
 										           
 										             </div>
-										           <h1>54353</h1>
+										           <h1>${noOfCaterers}</h1>
 										           <h3>Total Caterers</h3>
 										         
 										         </div>
@@ -111,8 +111,8 @@ cursor:pointer;
 										              <img style="max-width: 120px" class="img-fluid " alt="Total_client" src="images/icon/Total_client.png">
 										           
 										            </div>
-										           <h1>54353</h1>
-										           <h3>Total Client</h3>
+										           <h1>${noOfCustomer }</h1>
+										           <h3>Total Customer</h3>
 										         
 										         </div>
 										     </div>

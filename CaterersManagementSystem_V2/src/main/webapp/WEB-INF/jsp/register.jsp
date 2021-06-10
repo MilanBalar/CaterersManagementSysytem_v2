@@ -156,8 +156,7 @@
             if (pattern.test(email) && email !== '') {
                $("#email_error_message").hide();
                $("#email").css("border-bottom","4px solid #34F458");
-                var res=checkEmail();
-                alert(res);
+                checkEmail();
             } else {
                $("#email_error_message").html("Invalid Email");
                $("#email_error_message").show();
@@ -198,7 +197,6 @@
          
   }); 
  function checkEmail(){
-	 alert("ajax called");
 	 var data = $("#email").val();
 	 if(data != null && data != ''){
 	 $.ajax({
@@ -211,13 +209,13 @@
 	            	{
             		  $('#register').attr('disabled', 'disabled');
             		  $("#result").html(data);
-            		  $("#result").css("color","red");
+            		  $("#result").css("color","#FF0000");
 	            	}
             	else
 	            	{
             		 $('#register').removeAttr('disabled'); 
             		 $("#result").html(data);
-            		 $("#result").css("color","green");
+            		 $("#result").css("color","#00FF00");
             		}
                 	ValidCaptcha();
                 

@@ -92,7 +92,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.bean.TblAppUser</value>
-
+                <value>com.bean.TblCaterers</value> 
 			</list>
 
 		</property>

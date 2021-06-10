@@ -1,5 +1,4 @@
 package com.bean;
-
 import java.io.Serializable;
 
 import javax.persistence.Entity;
@@ -9,22 +8,44 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="dbo.TblAppUser")
-public class TblAppUser implements Serializable {
+@Table(name="dbo.TblCaterers")
+public class TblCaterers implements Serializable {
        @Id
        @GeneratedValue(strategy=GenerationType.AUTO)
-	   private Long  userId;
-	   private String userName;
+	   private Long  caterersId;
+	   private String name;
 	   private String email;
 	   private String password;
 	   private Long  contactNumber;
 	   private String address;
+	   private int isActive;
 
-	public String getUserName() {
-		return userName;
+
+	public TblCaterers() {
+		super();
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public TblCaterers(Long caterersId, String name, String email, String password, Long contactNumber, String address,
+			int isActive) {
+		super();
+		this.caterersId = caterersId;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.contactNumber = contactNumber;
+		this.address = address;
+		this.isActive = isActive;
+	}
+	public Long getCaterersId() {
+		return caterersId;
+	}
+	public void setCaterersId(Long caterersId) {
+		this.caterersId = caterersId;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getEmail() {
 		return email;
@@ -50,13 +71,12 @@ public class TblAppUser implements Serializable {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public Long getUserId() {
-		return userId;
+	public int getIsActive() {
+		return isActive;
 	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setIsActive(int isActive) {
+		this.isActive = isActive;
 	}
-
 
 
 

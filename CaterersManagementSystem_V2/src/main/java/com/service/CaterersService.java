@@ -21,4 +21,6 @@ public interface CaterersService {
 
 	 public long noOfCustomer();
 
+	 public long noOfCateres();
+
 }
